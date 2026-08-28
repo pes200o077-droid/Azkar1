@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>أذكار - خذ دقيقة لذكر الله</title>
+    <style>
+        /* ===== الخطوط ===== */
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;600;700&display=swap');
+
+        /* ===== إعدادات عامة ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', 'Amiri', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #0d1a0d;
+            padding: 20px;
+            /* ===== خلفية زخارف إسلامية فخمة ===== */
+            background-image:
+                /* زخارف نجوم ذهبية كبيرة */
+                radial-gradient(circle at 5% 8%, rgba(212, 175, 55, 0.15) 0%, transparent 35%),
+                radial-gradient(circle at 95% 92%, rgba(212, 175, 55, 0.12) 0%, transparent 35%),
+                radial-gradient(circle at 15% 90%, rgba(212, 175, 55, 0.08) 0%, transparent 30%),
+                radial-gradient(circle at 85% 10%, rgba(212, 175, 55, 0.08) 0%, transparent 30%),
+                radial-gradient(circle at 50% 50%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+                /* زخارف متكررة - نجوم ثمانية */
+                url("data:image/svg+xml,%3Csvg width='160' height='160' viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M80 8 L92 48 L134 48 L99 72 L112 112 L80 88 L48 112 L61 72 L26 48 L68 48 Z' fill='rgba(212,175,55,0.04)'/%3E%3C/svg%3E"),
+                /* زخارف دوائر متداخلة */
+                url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='60' cy='60' r='25' fill='none' stroke='rgba(212,175,55,0.03)' stroke-width='1.5'/%3E%3Ccircle cx='60' cy='60' r='38' fill='none' stroke='rgba(46,125,50,0.04)' stroke-width='1'/%3E%3Ccircle cx='60' cy='60' r='50' fill='none' stroke='rgba(212,175,55,0.02)' stroke-width='0.8'/%3E%3C/svg%3E"),
+                /* زخارف مثلثات إسلامية */
+                url("data:image/svg+xml,%3Csvg width='200' height='200' viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M100 15 L125 65 L180 65 L138 100 L158 155 L100 125 L42 155 L62 100 L20 65 L75 65 Z' fill='rgba(212,175,55,0.02)'/%3E%3C/svg%3E"),
+                /* زخارف مربعات معشقة */
+                url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='10' y='10' width='60' height='60' fill='none' stroke='rgba(46,125,50,0.03)' stroke-width='1'/%3E%3Crect x='20' y='20' width='40' height='40' fill='none' stroke='rgba(212,175,55,0.03)' stroke-width='0.8'/%3E%3Crect x='30' y='30' width='20' height='20' fill='rgba(212,175,55,0.02)'/%3E%3C/svg%3E");
+            background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat, repeat, repeat, repeat, repeat;
+            background-size: auto, auto, auto, auto, auto, 200px, 150px, 250px, 100px;
+            background-position: 0% 0%, 100% 100%, 0% 100%, 100% 0%, 50% 50%, 0 0, 0 0, 0 0, 0 0;
+        }
+
+        /* ===== البطاقة الرئيسية الفخمة ===== */
+        .card {
+            max-width: 540px;
+            width: 100%;
+            background: linear-gradient(145deg, rgba(13, 30, 13, 0.95), rgba(20, 40, 20, 0.92));
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: 50px 50px 40px 40px;
+            padding: 36px 30px 30px;
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.6),
+                0 10px 30px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(212, 175, 55, 0.15),
+                inset 0 -1px 0 rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.12);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ===== إطار ذهبي داخلي ===== */
+        .card .inner-border {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.06);
+            border-radius: 42px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* ===== زخارف البطاقة الداخلية ===== */
+
+        /* 1. نجمة ذهبية كبرى - يمين */
+        .card .ornament-star-1 {
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            font-size: 180px;
+            color: rgba(212, 175, 55, 0.04);
+            pointer-events: none;
+            z-index: 0;
+            transform: rotate(20deg);
+        }
+
+        /* 2. نجمة خضراء - يسار */
+        .card .ornament-star-2 {
+            position: absolute;
+            bottom: -40px;
+            left: -40px;
+            font-size: 200px;
+            color: rgba(46, 125, 50, 0.04);
+            pointer-events: none;
+            z-index: 0;
+            transform: rotate(-15deg);
+        }
+
+        /* 3. زخرفة وسطى - دائرة ذهبية متداخلة */
+        .card .bg-ornament-1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 460px;
+            height: 460px;
+            border-radius: 50%;
+            border: 1px solid rgba(212, 175, 55, 0.03);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .card .bg-ornament-2 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 340px;
+            height: 340px;
+            border-radius: 50%;
+            border: 1px solid rgba(212, 175, 55, 0.04);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .card .bg-ornament-3 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: 1px dashed rgba(212, 175, 55, 0.05);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .card .bg-ornament-4 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 1px solid rgba(46, 125, 50, 0.04);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* 4. زخارف الزوايا الذهبية */
+        .corner-ornament {
+            position: absolute;
+            font-size: 12px;
+            color: rgba(212, 175, 55, 0.10);
+            pointer-events: none;
+            z-index: 0;
+            letter-spacing: 3px;
+            font-weight: 300;
+        }
+
+        .corner-ornament.tl {
+            top: 16px;
+            left: 20px;
+        }
+        .corner-ornament.tr {
+            top: 16px;
+            right: 20px;
+        }
+        .corner-ornament.bl {
+            bottom: 16px;
+            left: 20px;
+        }
+        .corner-ornament.br {
+            bottom: 16px;
+            right: 20px;
+        }
+
+        /* 5. زخارف جانبية */
+        .side-ornament {
+            position: absolute;
+            font-size: 8px;
+            color: rgba(212, 175, 55, 0.04);
+            pointer-events: none;
+            z-index: 0;
+            letter-spacing: 6px;
+            writing-mode: vertical-rl;
+        }
+
+        .side-ornament.left {
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .side-ornament.right {
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* ===== الزخارف العلوية والسفلية ===== */
+        .ornament-top {
+            text-align: center;
+            font-size: 28px;
+            color: rgba(212, 175, 55, 0.15);
+            letter-spacing: 18px;
+            margin-bottom: 2px;
+            user-select: none;
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
+        }
+
+        .ornament-bottom {
+            text-align: center;
+            font-size: 24px;
+            color: rgba(212, 175, 55, 0.12);
+            letter-spacing: 14px;
+            margin-top: 4px;
+            user-select: none;
+            position: relative;
+            z-index: 1;
+            font-weight: 300;
+        }
+
+        /* ===== البسملة ===== */
+        .basmalah-ornament {
+            text-align: center;
+            font-size: 10px;
+            color: rgba(212, 175, 55, 0.10);
+            letter-spacing: 8px;
+            margin-bottom: 0px;
+            position: relative;
+            z-index: 1;
+            user-select: none;
+        }
+
+        .basmalah {
+            text-align: center;
+            font-family: 'Amiri', serif;
+            font-size: 30px;
+            font-weight: 700;
+            color: #e8d5b0;
+            margin: 2px 0 0px;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 20px rgba(212, 175, 55, 0.05);
+        }
+
+        .basmalah .heart {
+            color: #c0392b;
+            font-size: 32px;
+            display: inline-block;
+            animation: pulse-heart 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse-heart {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 15px;
+            color: rgba(212, 175, 55, 0.5);
+            margin-top: -2px;
+            margin-bottom: 14px;
+            font-weight: 400;
+            letter-spacing: 4px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .subtitle span {
+            color: rgba(212, 175, 55, 0.3);
+        }
+
+        /* ===== الفاصل الزخرفي ===== */
+        .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 8px 0 14px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .divider .line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.15), transparent);
+        }
+
+        .divider .diamond {
+            color: rgba(212, 175, 55, 0.2);
+            font-size: 16px;
+        }
+
+        .divider .diamond-sm {
+            color: rgba(212, 175, 55, 0.10);
+            font-size: 9px;
+            margin: 0 3px;
+        }
+
+        /* ===== الأزرار الفخمة ===== */
+        .btn-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 17px 24px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 60px;
+            border: 1px solid rgba(212, 175, 55, 0.06);
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            text-decoration: none;
+            color: #e8d5b0;
+            font-family: 'Cairo', sans-serif;
+            font-weight: 600;
+            font-size: 18px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            background: none;
+            width: 100%;
+            text-align: right;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(4px);
+        }
+
+        /* زخرفة خلفية الزر - نجمة */
+        .btn-item::before {
+            content: '✦';
+            position: absolute;
+            right: -8px;
+            top: -8px;
+            font-size: 60px;
+            color: rgba(212, 175, 55, 0.02);
+            pointer-events: none;
+        }
+
+        /* زخرفة ثانية - دائرة */
+        .btn-item::after {
+            content: '';
+            position: absolute;
+            left: -30px;
+            bottom: -30px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 1px solid rgba(212, 175, 55, 0.02);
+            pointer-events: none;
+        }
+
+        .btn-item:hover {
+            background: rgba(212, 175, 55, 0.04);
+            border-color: rgba(212, 175, 55, 0.15);
+            transform: translateX(4px) scale(1.01);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(212, 175, 55, 0.05);
+        }
+
+        .btn-item:active {
+            transform: scale(0.97);
+        }
+
+        .btn-item .icon {
+            font-size: 26px;
+            width: 42px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .btn-item .label {
+            flex: 1;
+            text-align: right;
+            color: #e8d5b0;
+        }
+
+        .btn-item .arrow {
+            color: rgba(212, 175, 55, 0.2);
+            font-size: 20px;
+            transition: transform 0.4s ease, color 0.4s ease;
+        }
+
+        .btn-item:hover .arrow {
+            transform: translateX(5px);
+            color: rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-item.gold-border {
+            border-color: rgba(212, 175, 55, 0.08);
+        }
+
+        .btn-item.gold-border:hover {
+            border-color: rgba(212, 175, 55, 0.2);
+            background: rgba(212, 175, 55, 0.03);
+        }
+
+        /* ===== محتوى الأذكار ===== */
+        .content-area {
+            margin-top: 16px;
+            padding: 20px 22px;
+            background: rgba(13, 26, 13, 0.6);
+            border-radius: 24px;
+            border: 1px solid rgba(212, 175, 55, 0.06);
+            display: none;
+            position: relative;
+            z-index: 1;
+            max-height: 340px;
+            overflow-y: auto;
+            direction: rtl;
+            box-shadow: inset 0 4px 40px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(4px);
+        }
+
+        /* زخرفة داخل منطقة المحتوى */
+        .content-area::before {
+            content: '✦ ✦ ✦ ✦ ✦';
+            position: absolute;
+            top: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 7px;
+            color: rgba(212, 175, 55, 0.04);
+            letter-spacing: 12px;
+            pointer-events: none;
+        }
+
+        .content-area::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(212, 175, 55, 0.04), transparent);
+            pointer-events: none;
+        }
+
+        .content-area.active {
+            display: block;
+            animation: fadeSlide 0.5s ease-out;
+        }
+
+        @keyframes fadeSlide {
+            0% {
+                opacity: 0;
+                transform: translateY(-12px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content-area .content-title {
+            font-family: 'Amiri', serif;
+            font-size: 21px;
+            font-weight: 700;
+            color: #e8d5b0;
+            text-align: center;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.06);
+            position: relative;
+        }
+
+        .content-area .content-title .gold {
+            color: #d4af37;
+        }
+
+        .content-area .dhikr-item {
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            border-right: 2px solid rgba(212, 175, 55, 0.08);
+            font-size: 17px;
+            line-height: 1.9;
+            color: #d4c8b0;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .content-area .dhikr-item:hover {
+            background: rgba(212, 175, 55, 0.02);
+            border-right-color: rgba(212, 175, 55, 0.15);
+        }
+
+        .content-area .dhikr-item .count {
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.05);
+            color: #d4af37;
+            padding: 0 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.04);
+        }
+
+        .content-area .dhikr-item .reward {
+            display: block;
+            font-size: 12px;
+            color: rgba(212, 175, 55, 0.3);
+            margin-top: 2px;
+            font-weight: 400;
+        }
+
+        .content-area .close-btn {
+            display: block;
+            margin: 12px auto 0;
+            padding: 7px 28px;
+            background: rgba(212, 175, 55, 0.04);
+            border: 1px solid rgba(212, 175, 55, 0.06);
+            border-radius: 30px;
+            color: rgba(212, 175, 55, 0.3);
+            font-family: 'Cairo', sans-serif;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .content-area .close-btn:hover {
+            background: rgba(212, 175, 55, 0.08);
+            border-color: rgba(212, 175, 55, 0.1);
+            color: rgba(212, 175, 55, 0.5);
+        }
+
+        /* ===== الفوتر ===== */
+        .footer-hadith {
+            text-align: center;
+            margin-top: 16px;
+            padding-top: 14px;
+            border-top: 1px solid rgba(212, 175, 55, 0.04);
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-hadith .quote {
+            font-family: 'Amiri', serif;
+            font-size: 22px;
+            font-weight: 700;
+            color: #e8d5b0;
+            letter-spacing: 1px;
+        }
+
+        .footer-hadith .quote .gold {
+            color: #d4af37;
+        }
+
+        .footer-hadith .source {
+            font-size: 13px;
+            color: rgba(212, 175, 55, 0.2);
+            margin-top: 4px;
+            letter-spacing: 3px;
+        }
+
+        .footer-ornament {
+            text-align: center;
+            font-size: 8px;
+            color: rgba(212, 175, 55, 0.05);
+            letter-spacing: 6px;
+            margin-top: 4px;
+            user-select: none;
+        }
+
+        /* ===== التمرير ===== */
+        .content-area::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        .content-area::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        .content-area::-webkit-scrollbar-thumb {
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 10px;
+        }
+
+        /* ===== توافق الجوال ===== */
+        @media (max-width: 420px) {
+            .card {
+                padding: 22px 16px 20px;
+                border-radius: 36px;
+            }
+            .card .inner-border {
+                top: 5px;
+                left: 5px;
+                right: 5px;
+                bottom: 5px;
+                border-radius: 32px;
+            }
+            .basmalah {
+                font-size: 24px;
+            }
+            .btn-item {
+                padding: 14px 18px;
+                font-size: 16px;
+                gap: 12px;
+                border-radius: 40px;
+            }
+            .btn-item .icon {
+                font-size: 22px;
+                width: 34px;
+            }
+            .footer-hadith .quote {
+                font-size: 19px;
+            }
+            .content-area {
+                padding: 14px 14px;
+                max-height: 250px;
+            }
+            .content-area .dhikr-item {
+                font-size: 15px;
+                padding: 10px 12px;
+            }
+            .ornament-top {
+                font-size: 20px;
+                letter-spacing: 12px;
+            }
+            .ornament-bottom {
+                font-size: 18px;
+                letter-spacing: 10px;
+            }
+            .card .ornament-star-1 {
+                font-size: 120px;
+                top: -20px;
+                right: -20px;
+            }
+            .card .ornament-star-2 {
+                font-size: 140px;
+                bottom: -30px;
+                left: -30px;
+            }
+            .corner-ornament {
+                font-size: 9px;
+            }
+            .side-ornament {
+                display: none;
+            }
+            .subtitle {
+                font-size: 13px;
+                letter-spacing: 2px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .btn-item {
+                font-size: 14px;
+                padding: 12px 14px;
+                gap: 10px;
+            }
+            .btn-item .icon {
+                font-size: 20px;
+                width: 30px;
+            }
+            .basmalah {
+                font-size: 21px;
+            }
+        }
+
+        /* ===== تأثير ظهور البطاقة ===== */
+        .card {
+            animation: fadeUp 0.8s ease-out;
+        }
+
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(40px) scale(0.96);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .card>* {
+            position: relative;
+            z-index: 2;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+
+        <!-- ===== إطار داخلي ذهبي ===== -->
+        <div class="inner-border"></div>
+
+        <!-- ===== زخارف خلفية ===== -->
+        <div class="ornament-star-1">✦</div>
+        <div class="ornament-star-2">✦</div>
+
+        <div class="bg-ornament-1"></div>
+        <div class="bg-ornament-2"></div>
+        <div class="bg-ornament-3"></div>
+        <div class="bg-ornament-4"></div>
+
+        <!-- ===== زخارف الزوايا ===== -->
+        <div class="corner-ornament tl">✦ ✦</div>
+        <div class="corner-ornament tr">✦ ✦</div>
+        <div class="corner-ornament bl">✦ ✦</div>
+        <div class="corner-ornament br">✦ ✦</div>
+
+        <!-- ===== زخارف جانبية ===== -->
+        <div class="side-ornament left">✦ ✦ ✦ ✦</div>
+        <div class="side-ornament right">✦ ✦ ✦ ✦</div>
+
+        <!-- ===== المحتوى ===== -->
+        <div class="ornament-top">✦ ✦ ✦</div>
+
+        <div class="basmalah-ornament">✦ ✦ ✦ ✦</div>
+        <div class="basmalah">
+            بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ <span class="heart">🤍</span>
+        </div>
+        <div class="subtitle">
+            <span>✧</span> خُذْ دَقِيقَةً لِذِكْرِ اللَّهِ <span>✧</span>
+        </div>
+
+        <div class="divider">
+            <span class="line"></span>
+            <span class="diamond-sm">✦</span>
+            <span class="diamond">◆</span>
+            <span class="diamond-sm">✦</span>
+            <span class="line"></span>
+        </div>
+
+        <div class="btn-list">
+
+            <button class="btn-item gold-border" data-target="quran">
+                <span class="icon">📖</span>
+                <span class="label">اقرأ القرآن</span>
+                <span class="arrow">‹</span>
+            </button>
+
+            <button class="btn-item" data-target="morning">
+                <span class="icon">🌅</span>
+                <span class="label">أذكار الصباح</span>
+                <span class="arrow">‹</span>
+            </button>
+
+            <button class="btn-item" data-target="evening">
+                <span class="icon">🌙</span>
+                <span class="label">أذكار المساء</span>
+                <span class="arrow">‹</span>
+            </button>
+
+            <button class="btn-item gold-border" data-target="dua">
+                <span class="icon">🤲</span>
+                <span class="label">أدعية من القرآن والسنة</span>
+                <span class="arrow">‹</span>
+            </button>
+
+            <button class="btn-item" data-target="salawat">
+                <span class="icon">❤️</span>
+                <span class="label">الصلاة على النبي ﷺ</span>
+                <span class="arrow">‹</span>
+            </button>
+
+            <button class="btn-item gold-border" data-target="adhkar">
+                <span class="icon">📿</span>
+                <span class="label">أذكار واستغفار</span>
+                <span class="arrow">‹</span>
+            </button>
+
+        </div>
+
+        <!-- ===== منطقة عرض المحتوى ===== -->
+        <div class="content-area" id="contentArea"></div>
+
+        <div class="divider" style="margin: 12px 0 6px;">
+            <span class="line"></span>
+            <span class="diamond-sm">✦</span>
+            <span class="diamond">✦</span>
+            <span class="diamond-sm">✦</span>
+            <span class="line"></span>
+        </div>
+
+        <div class="footer-hadith">
+            <div class="quote">
+                «<span class="gold">الدَّالُ عَلَى الْخَيْرِ</span> كَفَاعِلِهِ»
+            </div>
+            <div class="source">— رواه مسلم</div>
+        </div>
+
+        <div class="footer-ornament">✦ ✦ ✦ ✦ ✦</div>
+
+        <div class="ornament-bottom">✦ ✦ ✦</div>
+
+    </div>
+
+    <script>
+        // ============================================
+        // محتوى الأذكار والأدعية
+        // ============================================
+        const contentData = {
+
+            quran: {
+                title: '📖  اقرأ القرآن',
+                items: [
+                    { text: '﴿ قُلْ هُوَ اللَّهُ أَحَدٌ ﴾', reward: 'سورة الإخلاص — تعدل ثلث القرآن' },
+                    { text: '﴿ اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ ﴾', reward: 'آية الكرسي — أعظم آية في القرآن' },
+                    { text: '﴿ رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ ﴾', reward: 'دعاء القرآن' },
+                    { text: '﴿ وَذَكِّرْ فَإِنَّ الذِّكْرَىٰ تَنفَعُ الْمُؤْمِنِينَ ﴾', reward: 'الذاريات: 55' },
+                ]
+            },
+
+            morning: {
+                title: '🌅  أذكار الصباح',
+                items: [
+                    { text: 'أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ', reward: 'مرة واحدة' },
+                    { text: 'اللَّهُمَّ بِكَ أَصْبَحْنَا وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا وَبِكَ نَمُوتُ وَإِلَيْكَ النُّشُورُ', reward: 'مرة واحدة' },
+                    { text: 'سُبْحَانَ اللَّهِ وَبِحَمْدِهِ عَدَدَ خَلْقِهِ وَرِضَا نَفْسِهِ', reward: '٣ مرات' },
+                    { text: 'لَا إِلَٰهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ', reward: '١٠ مرات' },
+                ]
+            },
+
+            evening: {
+                title: '🌙  أذكار المساء',
+                items: [
+                    { text: 'أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ', reward: 'مرة واحدة' },
+                    { text: 'اللَّهُمَّ بِكَ أَمْسَيْنَا وَبِكَ أَصْبَحْنَا، وَبِكَ نَحْيَا وَبِكَ نَمُوتُ وَإِلَيْكَ الْمَصِيرُ', reward: 'مرة واحدة' },
+                    { text: 'آمَنَّا بِاللَّهِ وَرَسُولِهِ، وَعَلَى اللَّهِ تَوَكَّلْنَا', reward: 'مرة واحدة' },
+                    { text: 'سُبْحَانَ اللَّهِ وَبِحَمْدِهِ سُبْحَانَ اللَّهِ الْعَظِيمِ', reward: '٣ مرات' },
+                ]
+            },
+
+            dua: {
+                title: '🤲  أدعية من القرآن والسنة',
+                items: [
+                    { text: 'رَبَّنَا لَا تُزِغْ قُلُوبَنَا بَعْدَ إِذْ هَدَيْتَنَا وَهَبْ لَنَا مِن لَّدُنكَ رَحْمَةً', reward: 'آل عمران: 8' },
+                    { text: 'رَبَّنَا اغْفِرْ لَنَا وَلِإِخْوَانِنَا الَّذِينَ سَبَقُونَا بِالْإِيمَانِ', reward: 'الحشر: 10' },
+                    { text: 'اللَّهُمَّ إِنِّي أَسْأَلُكَ الْعَافِيَةَ فِي الدُّنْيَا وَالْآخِرَةِ', reward: 'دعاء النبي ﷺ' },
+                    { text: 'رَبِّ اشْرَحْ لِي صَدْرِي وَيَسِّرْ لِي أَمْرِي', reward: 'طه: 25-26' },
+                ]
+            },
+
+            salawat: {
+                title: '❤️  الصلاة على النبي ﷺ',
+                items: [
+                    { text: 'اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ كَمَا صَلَّيْتَ عَلَى إِبْرَاهِيمَ', reward: 'صلاة واحدة' },
+                    { text: 'اللَّهُمَّ صَلِّ وَسَلِّمْ وَبَارِكْ عَلَى نَبِيِّنَا مُحَمَّدٍ', reward: 'مرة واحدة' },
+                    { text: 'صَلَّى اللَّهُ عَلَى مُحَمَّدٍ وَآلِهِ وَصَحْبِهِ وَسَلَّمَ', reward: 'مرة واحدة' },
+                    { text: 'اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ عَبْدِكَ وَنَبِيِّكَ وَرَسُولِكَ النَّبِيِّ الْأُمِّيِّ', reward: 'مرة واحدة' },
+                ]
+            },
+
+            adhkar: {
+                title: '📿  أذكار واستغفار',
+                items: [
+                    { text: 'أَسْتَغْفِرُ اللَّهَ الْعَظِيمَ الَّذِي لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ وَأَتُوبُ إِلَيْهِ', reward: '٣ مرات' },
+                    { text: 'سُبْحَانَ اللَّهِ وَبِحَمْدِهِ سُبْحَانَ اللَّهِ الْعَظِيمِ', reward: 'وزنها ثقيل' },
+                    { text: 'لَا حَوْلَ وَلَا قُوَّةَ إِلَّا بِاللَّهِ', reward: 'كنز من كنوز الجنة' },
+                    { text: 'سُبْحَانَ اللَّهِ (٣٣) — الْحَمْدُ لِلَّهِ (٣٣) — اللَّهُ أَكْبَرُ (٣٣) — لَا إِلَٰهَ إِلَّا اللَّهُ (١)', reward: '١٠٠ حسنة' },
+                ]
+            }
+        };
+
+        // ============================================
+        // تفعيل الأزرار
+        // ============================================
+        const buttons = document.querySelectorAll('.btn-item');
+        const contentArea = document.getElementById('contentArea');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                const target = this.dataset.target;
+                const data = contentData[target];
+
+                if (!data) return;
+
+                let html = `
+                    <div class="content-title">${data.title}</div>
+                `;
+
+                data.items.forEach(item => {
+                    html += `
+                        <div class="dhikr-item">
+                            ${item.text}
+                            <span class="count">${item.reward}</span>
+                        </div>
+                    `;
+                });
+
+                html += `
+                    <button class="close-btn" onclick="closeContent()">✕ إغلاق</button>
+                `;
+
+                contentArea.innerHTML = html;
+                contentArea.classList.add('active');
+
+                contentArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            });
+        });
+
+        function closeContent() {
+            contentArea.classList.remove('active');
+            setTimeout(() => {
+                contentArea.innerHTML = '';
+            }, 300);
+        }
+
+        document.addEventListener('click', function(e) {
+            const isContent = contentArea.contains(e.target);
+            const isButton = e.target.closest('.btn-item');
+            if (!isContent && !isButton && contentArea.classList.contains('active')) {
+                closeContent();
+            }
+        });
+    </script>
+
+</body>
+</html>
