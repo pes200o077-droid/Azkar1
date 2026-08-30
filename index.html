@@ -237,24 +237,6 @@
             margin: 0 3px;
         }
 
-        /* ===== عداد الزوار ===== */
-        .visitor-counter {
-            text-align: center;
-            padding: 6px 0 10px;
-            color: rgba(212, 175, 55, 0.2);
-            font-size: 13px;
-            letter-spacing: 2px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .visitor-counter .number {
-            color: #d4af37;
-            font-size: 18px;
-            font-weight: 700;
-            margin: 0 4px;
-        }
-
         /* ===== الأزرار ===== */
         .btn-list {
             display: flex;
@@ -668,7 +650,6 @@
             .quran-image-item .surah-name { font-size: 13px; }
             .surah-modal .modal-box { padding: 20px 16px; }
             .surah-modal .modal-box .surah-text { font-size: 18px; }
-            .visitor-counter { font-size: 11px; }
         }
 
         .card { animation: fadeUp 0.8s ease-out; }
@@ -706,8 +687,6 @@
             <span class="diamond-sm">✦</span>
             <span class="line"></span>
         </div>
-
-
 
         <div class="btn-list">
             <button class="btn-item gold-border" data-target="quran"><span class="icon">📖</span><span class="label">اقرأ القرآن</span><span class="arrow">‹</span></button>
@@ -1019,17 +998,6 @@
                 ]
             }
         };
-
-        // ============================================
-        // عداد الزوار (محاكاة)
-        // ============================================
-        function updateVisitorCount() {
-            const countElement = document.getElementById('visitorCount');
-            // رقم ثابت للمظهر
-            countElement.textContent = '1,247';
-        }
-
-        updateVisitorCount();
 
         // ============================================
         // دوال عرض السورة
